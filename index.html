@@ -34,11 +34,22 @@
             padding: 20px;
             width: 100%;
         }
-        .week {
+        .week, .day-content {
             display: none;
         }
-        .week.active {
+        .week.active, .day-content.active {
             display: block;
+        }
+        .day {
+            cursor: pointer;
+            background: #f1f1f1;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .day:hover {
+            background: #ddd;
         }
     </style>
     <script>
@@ -48,6 +59,11 @@
                 weeks[i].classList.remove("active");
             }
             document.getElementById(weekId).classList.add("active");
+        }
+
+        function toggleDay(dayId) {
+            let dayContent = document.getElementById(dayId);
+            dayContent.classList.toggle("active");
         }
     </script>
 </head>
@@ -78,75 +94,85 @@
         
         <div id="week1" class="week active">
             <h2>Week 1: DevOps Foundations, Linux, and Networking</h2>
-            <ul>
-                <li>Day 1: Introduction to DevOps Fundamentals</li>
-                <li>Day 2: Introduction to Linux for DevOps</li>
-                <li>Day 3: Linux System and Process Management</li>
-                <li>Day 4: Linux Shell Scripting and Automation</li>
-                <li>Day 5: Introduction to Networking for DevOps</li>
-                <li>Day 6: Networking Tools and Troubleshooting</li>
-                <li>Day 7: Linux Networking & Security Basics</li>
-            </ul>
+            <div class="day" onclick="toggleDay('day1')">Day 1: Introduction to DevOps Fundamentals</div>
+            <div id="day1" class="day-content">
+                <ul>
+                    <li><a href="#">What is DevOps and Why It Matters</a></li>
+                    <li><a href="#">DevOps Culture and Principles</a></li>
+                    <li><a href="#">DevOps Lifecycle Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="day" onclick="toggleDay('day2')">Day 2: Introduction to Linux for DevOps</div>
+            <div id="day2" class="day-content">
+                <ul>
+                    <li><a href="#">Basic Linux Commands</a></li>
+                    <li><a href="#">File Permissions and Ownership</a></li>
+                    <li><a href="#">User and Group Management</a></li>
+                </ul>
+            </div>
+
+            <div class="day" onclick="toggleDay('day3')">Day 3: Linux System and Process Management</div>
+            <div id="day3" class="day-content">
+                <ul>
+                    <li><a href="#">Managing System Processes</a></li>
+                    <li><a href="#">Log Management</a></li>
+                    <li><a href="#">Service Management</a></li>
+                </ul>
+            </div>
         </div>
 
         <div id="week2" class="week">
             <h2>Week 2: Git and Version Control</h2>
-            <ul>
-                <li>Day 8: Introduction to Git</li>
-                <li>Day 9: Working with GitHub</li>
-                <li>Day 10: Branching and Pull Requests</li>
-                <li>Day 11: Handling Merge Conflicts</li>
-                <li>Day 12: Git Stashing & Rewriting History</li>
-                <li>Day 13: Advanced Git Techniques</li>
-                <li>Day 14: Final Git Project</li>
-            </ul>
+            <div class="day" onclick="toggleDay('day8')">Day 8: Introduction to Git</div>
+            <div id="day8" class="day-content">
+                <ul>
+                    <li><a href="#">What is Git?</a></li>
+                    <li><a href="#">Basic Git Commands</a></li>
+                    <li><a href="#">Understanding Git Workflow</a></li>
+                </ul>
+            </div>
+
+            <div class="day" onclick="toggleDay('day9')">Day 9: Working with GitHub</div>
+            <div id="day9" class="day-content">
+                <ul>
+                    <li><a href="#">Cloning and Pushing Changes</a></li>
+                    <li><a href="#">Forking Repositories</a></li>
+                    <li><a href="#">Collaborating on Open Source</a></li>
+                </ul>
+            </div>
         </div>
 
         <div id="week3" class="week">
             <h2>Week 3: Continuous Integration and Delivery</h2>
-            <ul>
-                <li>Day 15: Introduction to CI/CD</li>
-                <li>Day 16: CI/CD Pipeline Stages</li>
-                <li>Day 17: CI/CD Tools Overview</li>
-                <li>Day 18: Hands-on CI/CD Pipeline</li>
-                <li>Day 19: Continuous Deployment & Testing</li>
-                <li>Day 20: Security in CI/CD Pipelines</li>
-                <li>Day 21: CI/CD in Cloud Environments</li>
-            </ul>
-        </div>
+            <div class="day" onclick="toggleDay('day15')">Day 15: Introduction to CI/CD</div>
+            <div id="day15" class="day-content">
+                <ul>
+                    <li><a href="#">What is CI/CD?</a></li>
+                    <li><a href="#">Benefits of CI/CD</a></li>
+                    <li><a href="#">CI/CD Workflow</a></li>
+                </ul>
+            </div>
 
-        <div id="week4" class="week">
-            <h2>Week 4: Docker and Containers</h2>
-            <ul>
-                <li>Day 22: Introduction to Docker</li>
-                <li>Day 23: Setting Up Docker</li>
-                <li>Day 24: Dockerfile and Image Creation</li>
-                <li>Day 25: Managing Containers and Networking</li>
-                <li>Day 26: Docker Storage and Volumes</li>
-                <li>Day 27: Docker Hub and Private Registries</li>
-                <li>Day 28: Docker Compose</li>
-            </ul>
-        </div>
-
-        <div id="week5" class="week">
-            <h2>Week 5: Kubernetes Fundamentals</h2>
-            <ul>
-                <li>Day 29: Introduction to Kubernetes</li>
-                <li>Day 30: Deploying Containers with Kubernetes</li>
-                <li>Day 31: Scaling and Managing Deployments</li>
-                <li>Day 32: Kubernetes Networking and Services</li>
-                <li>Day 33: ConfigMaps and Secrets</li>
-                <li>Day 34: Persistent Storage in Kubernetes</li>
-                <li>Day 35: Helm: Kubernetes Package Manager</li>
-            </ul>
+            <div class="day" onclick="toggleDay('day16')">Day 16: CI/CD Pipeline Stages</div>
+            <div id="day16" class="day-content">
+                <ul>
+                    <li><a href="#">Source Control Integration</a></li>
+                    <li><a href="#">Build and Test Automation</a></li>
+                    <li><a href="#">Deployment and Release</a></li>
+                </ul>
+            </div>
         </div>
 
         <div id="week15" class="week">
             <h2>Week 15: Wrap-Up and Next Steps</h2>
-            <ul>
-                <li>Day 99: DevOps Career Paths and Certifications</li>
-                <li>Day 100: Final Project and Continued Learning</li>
-            </ul>
+            <div class="day" onclick="toggleDay('day99')">Day 99: DevOps Career Paths and Certifications</div>
+            <div id="day99" class="day-content">
+                <ul>
+                    <li><a href="#">Certifications Overview</a></li>
+                    <li><a href="#">Building Your DevOps Portfolio</a></li>
+                </ul>
+            </div>
         </div>
 
     </div>
