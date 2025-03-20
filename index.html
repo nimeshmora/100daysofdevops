@@ -9,47 +9,99 @@
             display: flex;
             font-family: Arial, sans-serif;
             margin: 0;
+            background: #f4f4f4;
         }
         .sidebar {
-            width: 250px;
+            width: 280px;
             height: 100vh;
-            background: #333;
+            background: #2c3e50;
             color: white;
             padding-top: 20px;
             position: fixed;
             overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+        .sidebar h2 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #f39c12;
         }
         .sidebar a {
             display: block;
             color: white;
-            padding: 10px;
+            padding: 12px;
             text-decoration: none;
             transition: 0.3s;
+            font-size: 14px;
+            border-bottom: 1px solid #34495e;
+            cursor: pointer;
         }
         .sidebar a:hover {
-            background: #575757;
+            background: #f39c12;
         }
         .content {
-            margin-left: 260px;
+            margin-left: 300px;
             padding: 20px;
             width: 100%;
+            background: #ecf0f1;
         }
-        .week, .day-content {
+        .week {
             display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .week.active, .day-content.active {
+        .week.active {
             display: block;
+        }
+        .week h2 {
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
         }
         .day {
             cursor: pointer;
-            background: #f1f1f1;
-            padding: 8px;
+            background: #e74c3c;
+            padding: 12px;
             margin: 5px 0;
             border-radius: 5px;
             transition: 0.3s;
+            font-weight: bold;
+            color: white;
         }
         .day:hover {
-            background: #ddd;
+            background: #c0392b;
+        }
+        .day-content {
+            display: none;
+            margin-left: 20px;
+            padding: 10px;
+            background: white;
+            border-left: 5px solid #e74c3c;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .day-content.active {
+            display: block;
+        }
+        .day-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .day-content ul li {
+            margin: 5px 0;
+        }
+        .day-content ul li a {
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .day-content ul li a:hover {
+            text-decoration: underline;
         }
     </style>
     <script>
@@ -68,114 +120,36 @@
     </script>
 </head>
 <body>
-
-    <!-- Sidebar Navigation -->
     <div class="sidebar">
-        <h2 style="text-align:center;">DevOps Plan</h2>
-        <a href="javascript:void(0);" onclick="showWeek('week1')">Week 1: DevOps, Linux, Networking</a>
-        <a href="javascript:void(0);" onclick="showWeek('week2')">Week 2: Git & Version Control</a>
-        <a href="javascript:void(0);" onclick="showWeek('week3')">Week 3: CI/CD Pipelines</a>
-        <a href="javascript:void(0);" onclick="showWeek('week4')">Week 4: Docker & Containers</a>
-        <a href="javascript:void(0);" onclick="showWeek('week5')">Week 5: Kubernetes Basics</a>
-        <a href="javascript:void(0);" onclick="showWeek('week6')">Week 6: Advanced Kubernetes</a>
-        <a href="javascript:void(0);" onclick="showWeek('week7')">Week 7: Kubernetes Best Practices</a>
-        <a href="javascript:void(0);" onclick="showWeek('week8')">Week 8: Cloud Fundamentals</a>
-        <a href="javascript:void(0);" onclick="showWeek('week9')">Week 9: Terraform & IaC</a>
-        <a href="javascript:void(0);" onclick="showWeek('week10')">Week 10: Ansible & Config Mgmt</a>
-        <a href="javascript:void(0);" onclick="showWeek('week11')">Week 11: Monitoring & Logging</a>
-        <a href="javascript:void(0);" onclick="showWeek('week12')">Week 12: Security & DevSecOps</a>
-        <a href="javascript:void(0);" onclick="showWeek('week13')">Week 13: DevOps Culture</a>
-        <a href="javascript:void(0);" onclick="showWeek('week14')">Week 14: Advanced DevOps</a>
-        <a href="javascript:void(0);" onclick="showWeek('week15')">Week 15: Wrap-Up</a>
+        <h2>100-Day DevOps Plan</h2>
+        <!-- Generate Sidebar for 15 Weeks -->
+        <script>
+            for (let i = 1; i <= 15; i++) {
+                document.write(`<a onclick="showWeek('week${i}')">Week ${i}</a>`);
+            }
+        </script>
     </div>
-
-    <!-- Content Area -->
+    
     <div class="content">
-        
-        <div id="week1" class="week active">
-            <h2>Week 1: DevOps Foundations, Linux, and Networking</h2>
-            <div class="day" onclick="toggleDay('day1')">Day 1: Introduction to DevOps Fundamentals</div>
-            <div id="day1" class="day-content">
-                <ul>
-                    <li><a href="#">What is DevOps and Why It Matters</a></li>
-                    <li><a href="#">DevOps Culture and Principles</a></li>
-                    <li><a href="#">DevOps Lifecycle Overview</a></li>
-                </ul>
-            </div>
-
-            <div class="day" onclick="toggleDay('day2')">Day 2: Introduction to Linux for DevOps</div>
-            <div id="day2" class="day-content">
-                <ul>
-                    <li><a href="#">Basic Linux Commands</a></li>
-                    <li><a href="#">File Permissions and Ownership</a></li>
-                    <li><a href="#">User and Group Management</a></li>
-                </ul>
-            </div>
-
-            <div class="day" onclick="toggleDay('day3')">Day 3: Linux System and Process Management</div>
-            <div id="day3" class="day-content">
-                <ul>
-                    <li><a href="#">Managing System Processes</a></li>
-                    <li><a href="#">Log Management</a></li>
-                    <li><a href="#">Service Management</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="week2" class="week">
-            <h2>Week 2: Git and Version Control</h2>
-            <div class="day" onclick="toggleDay('day8')">Day 8: Introduction to Git</div>
-            <div id="day8" class="day-content">
-                <ul>
-                    <li><a href="#">What is Git?</a></li>
-                    <li><a href="#">Basic Git Commands</a></li>
-                    <li><a href="#">Understanding Git Workflow</a></li>
-                </ul>
-            </div>
-
-            <div class="day" onclick="toggleDay('day9')">Day 9: Working with GitHub</div>
-            <div id="day9" class="day-content">
-                <ul>
-                    <li><a href="#">Cloning and Pushing Changes</a></li>
-                    <li><a href="#">Forking Repositories</a></li>
-                    <li><a href="#">Collaborating on Open Source</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="week3" class="week">
-            <h2>Week 3: Continuous Integration and Delivery</h2>
-            <div class="day" onclick="toggleDay('day15')">Day 15: Introduction to CI/CD</div>
-            <div id="day15" class="day-content">
-                <ul>
-                    <li><a href="#">What is CI/CD?</a></li>
-                    <li><a href="#">Benefits of CI/CD</a></li>
-                    <li><a href="#">CI/CD Workflow</a></li>
-                </ul>
-            </div>
-
-            <div class="day" onclick="toggleDay('day16')">Day 16: CI/CD Pipeline Stages</div>
-            <div id="day16" class="day-content">
-                <ul>
-                    <li><a href="#">Source Control Integration</a></li>
-                    <li><a href="#">Build and Test Automation</a></li>
-                    <li><a href="#">Deployment and Release</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="week15" class="week">
-            <h2>Week 15: Wrap-Up and Next Steps</h2>
-            <div class="day" onclick="toggleDay('day99')">Day 99: DevOps Career Paths and Certifications</div>
-            <div id="day99" class="day-content">
-                <ul>
-                    <li><a href="#">Certifications Overview</a></li>
-                    <li><a href="#">Building Your DevOps Portfolio</a></li>
-                </ul>
-            </div>
-        </div>
-
+        <!-- Generate 15 Weeks and 100 Days Content -->
+        <script>
+            for (let week = 1, dayCounter = 1; week <= 15; week++) {
+                document.write(`<div id="week${week}" class="week ${week === 1 ? 'active' : ''}">`);
+                document.write(`<h2>Week ${week}</h2>`);
+                
+                for (let day = 1; day <= 7 && dayCounter <= 100; day++, dayCounter++) {
+                    document.write(`
+                        <div class="day" onclick="toggleDay('day${dayCounter}')">Day ${dayCounter}</div>
+                        <div id="day${dayCounter}" class="day-content">
+                            <ul>
+                                <li><a href="#">Topic for Day ${dayCounter}</a></li>
+                            </ul>
+                        </div>
+                    `);
+                }
+                document.write('</div>');
+            }
+        </script>
     </div>
-
 </body>
 </html>
