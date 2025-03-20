@@ -7,176 +7,126 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #1A1A2E;
+            color: #EAEAEA;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        .navbar {
-            background: #333;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 20px;
         }
         .container {
-            display: flex;
-        }
-        .sidebar {
-            width: 200px;
-            background: #f4f4f4;
-            padding: 20px;
-            height: 100vh;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            padding: 10px;
-            cursor: pointer;
-            background: #ddd;
-            margin: 5px 0;
-            text-align: center;
-        }
-        .content {
-            flex-grow: 1;
-            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
         }
         .tabs {
             display: flex;
-            gap: 10px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #00ADB5;
         }
         .tab {
             padding: 10px 20px;
             cursor: pointer;
-            background: #ddd;
-            border-radius: 5px;
+            border-radius: 5px 5px 0 0;
+            background-color: #222831;
+            color: #00ADB5;
+            font-weight: bold;
+            margin-right: 5px;
         }
         .tab.active {
-            background: #333;
-            color: white;
+            background-color: #00ADB5;
+            color: #222831;
         }
-        .days {
+        .tab-content {
             display: none;
-            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #00ADB5;
+            background-color: #222831;
         }
-        .days.active {
+        .tab-content.active {
             display: block;
         }
         .day {
             padding: 10px;
-            background: #eee;
+            background-color: #393E46;
             margin: 5px 0;
             cursor: pointer;
-            border-left: 5px solid #333;
-            font-weight: bold;
+            border-radius: 5px;
         }
         .day:hover {
-            background: #ddd;
+            background-color: #00ADB5;
+            color: #222831;
         }
         .day-content {
             display: none;
             padding: 10px;
-            background: white;
-            border-left: 5px solid #555;
-            margin-left: 10px;
+            background-color: #232931;
+            border-radius: 5px;
+        }
+        .day-content a {
+            color: #00ADB5;
+            text-decoration: none;
+        }
+        .day-content a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
-    <div class="navbar">100-Day DevOps Learning Plan</div>
-
     <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li onclick="showTab(0)">Week 1</li>
-                <li onclick="showTab(1)">Week 2</li>
-                <li onclick="showTab(2)">Week 3</li>
-                <li onclick="showTab(3)">Week 4</li>
-            </ul>
+        <h1>100-Day DevOps Learning Plan</h1>
+        <div class="tabs">
+            <div class="tab active" onclick="showWeek(1)">Week 1</div>
+            <div class="tab" onclick="showWeek(2)">Week 2</div>
+            <div class="tab" onclick="showWeek(3)">Week 3</div>
+            <div class="tab" onclick="showWeek(4)">Week 4</div>
+            <div class="tab" onclick="showWeek(5)">Week 5</div>
+            <div class="tab" onclick="showWeek(6)">Week 6</div>
+            <div class="tab" onclick="showWeek(7)">Week 7</div>
+            <div class="tab" onclick="showWeek(8)">Week 8</div>
+            <div class="tab" onclick="showWeek(9)">Week 9</div>
+            <div class="tab" onclick="showWeek(10)">Week 10</div>
+            <div class="tab" onclick="showWeek(11)">Week 11</div>
+            <div class="tab" onclick="showWeek(12)">Week 12</div>
+            <div class="tab" onclick="showWeek(13)">Week 13</div>
+            <div class="tab" onclick="showWeek(14)">Week 14</div>
+            <div class="tab" onclick="showWeek(15)">Week 15</div>
         </div>
-
-        <div class="content">
-            <div class="tabs">
-                <div class="tab active" onclick="showTab(0)">Week 1</div>
-                <div class="tab" onclick="showTab(1)">Week 2</div>
-                <div class="tab" onclick="showTab(2)">Week 3</div>
-                <div class="tab" onclick="showTab(3)">Week 4</div>
+        
+        <div id="week1" class="tab-content active">
+            <h2>Week 1: DevOps Foundations, Linux, and Networking</h2>
+            <div class="day" onclick="toggleDay('day1')">Day 1: Introduction to DevOps Fundamentals</div>
+            <div id="day1" class="day-content">
+                <p>What is DevOps and why it matters.</p>
+                <p>DevOps as a culture: Bridging Development (Dev) and Operations (Ops).</p>
+                <p><a href="#">Sample eBook</a> | <a href="#">Infographic</a> | <a href="#">Blog</a></p>
             </div>
-
-            <div class="days active" id="week-0">
-                <div class="day" onclick="toggleDay(0)">Day 1: Introduction to DevOps</div>
-                <div class="day-content" id="day-0">
-                    <p><strong>What is DevOps?</strong> DevOps is a set of practices that combines software development and IT operations.</p>
-                    <p>It focuses on continuous development, integration, and deployment to improve software delivery.</p>
-                </div>
-
-                <div class="day" onclick="toggleDay(1)">Day 2: Introduction to Linux</div>
-                <div class="day-content" id="day-1">
-                    <p><strong>Why Linux?</strong> Linux is widely used in DevOps environments for its flexibility and performance.</p>
-                    <p>Basic Linux commands: <code>ls, cd, mkdir, rm, cp, mv, touch, cat, echo</code>.</p>
-                </div>
+            <div class="day" onclick="toggleDay('day2')">Day 2: Introduction to Linux for DevOps</div>
+            <div id="day2" class="day-content">
+                <p>Why Linux is crucial for DevOps.</p>
+                <p>Basic Linux commands: (ls, cd, mkdir, rm, cp, mv, touch, cat, echo).</p>
+                <p><a href="#">Sample eBook</a> | <a href="#">Infographic</a> | <a href="#">Blog</a></p>
             </div>
-
-            <div class="days" id="week-1">
-                <div class="day" onclick="toggleDay(2)">Day 8: Git Basics</div>
-                <div class="day-content" id="day-2">
-                    <p><strong>Version Control:</strong> Git helps track changes in code over time.</p>
-                    <p>Basic commands: <code>git init, git add, git commit, git push, git pull</code>.</p>
-                </div>
-
-                <div class="day" onclick="toggleDay(3)">Day 9: Working with GitHub</div>
-                <div class="day-content" id="day-3">
-                    <p><strong>GitHub</strong> is a remote repository hosting service for collaborative coding.</p>
-                    <p>Commands to interact with remote repositories: <code>git clone, git fetch, git merge</code>.</p>
-                </div>
+            <div class="day" onclick="toggleDay('day3')">Day 3: Linux System and Process Management</div>
+            <div id="day3" class="day-content">
+                <p>Managing system processes (ps, top, kill, jobs, nohup).</p>
+                <p>File processing tools (grep, sed, awk, cut, sort, uniq).</p>
+                <p><a href="#">Sample eBook</a> | <a href="#">Infographic</a> | <a href="#">Blog</a></p>
             </div>
-
-            <div class="days" id="week-2">
-                <div class="day" onclick="toggleDay(4)">Day 15: CI/CD Basics</div>
-                <div class="day-content" id="day-4">
-                    <p><strong>CI/CD Pipeline:</strong> Automates software build, test, and deployment.</p>
-                    <p>Popular tools: Jenkins, GitHub Actions, GitLab CI/CD.</p>
-                </div>
-
-                <div class="day" onclick="toggleDay(5)">Day 16: Pipeline Stages</div>
-                <div class="day-content" id="day-5">
-                    <p><strong>Stages:</strong> Source code management, build automation, testing, deployment.</p>
-                </div>
-            </div>
-
-            <div class="days" id="week-3">
-                <div class="day" onclick="toggleDay(6)">Day 22: Introduction to Docker</div>
-                <div class="day-content" id="day-6">
-                    <p><strong>What are Containers?</strong> Containers are lightweight, portable environments for running applications.</p>
-                </div>
-
-                <div class="day" onclick="toggleDay(7)">Day 23: Running Containers</div>
-                <div class="day-content" id="day-7">
-                    <p>Commands: <code>docker run, docker ps, docker stop, docker rm</code>.</p>
-                </div>
-            </div>
+            <!-- Repeat for all days -->
         </div>
     </div>
 
     <script>
-        function showTab(index) {
-            document.querySelectorAll('.tab').forEach((tab, i) => {
-                tab.classList.toggle('active', i === index);
-            });
-
-            document.querySelectorAll('.days').forEach((days, i) => {
-                days.classList.toggle('active', i === index);
-            });
+        function showWeek(weekNumber) {
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`#week${weekNumber}`).classList.add('active');
+            document.querySelector(`.tabs .tab:nth-child(${weekNumber})`).classList.add('active');
         }
 
-        function toggleDay(index) {
-            let content = document.getElementById('day-' + index);
+        function toggleDay(dayId) {
+            let content = document.getElementById(dayId);
             content.style.display = content.style.display === 'block' ? 'none' : 'block';
         }
     </script>
-
 </body>
 </html>
