@@ -10,38 +10,45 @@
             font-family: Arial, sans-serif;
             display: flex;
             margin: 0;
+            background-color: #F8FAFC;
         }
         .sidebar {
-            width: 250px;
-            background-color: #1E293B;
+            width: 280px;
+            background-color: #1F2937;
             color: white;
             height: 100vh;
-            padding: 15px;
+            padding: 20px;
             position: fixed;
             overflow-y: auto;
         }
         .content {
-            margin-left: 270px;
+            margin-left: 300px;
             padding: 20px;
             width: 100%;
         }
         .sidebar h2 {
             text-align: center;
             color: #FACC15;
+            margin-bottom: 20px;
         }
         .week {
-            margin: 10px 0;
+            margin-bottom: 10px;
             cursor: pointer;
         }
         .week-title {
-            padding: 10px;
-            background-color: #334155;
+            padding: 12px;
+            background-color: #374151;
             border-radius: 5px;
             font-weight: bold;
+            color: #FACC15;
         }
         .days {
             display: none;
             padding-left: 15px;
+            background-color: #4B5563;
+            border-radius: 5px;
+            margin-top: 5px;
+            padding: 10px;
         }
         .day {
             padding: 5px 0;
@@ -57,11 +64,7 @@
     <script>
         function toggleDays(id) {
             var days = document.getElementById(id);
-            if (days.style.display === "none") {
-                days.style.display = "block";
-            } else {
-                days.style.display = "none";
-            }
+            days.style.display = days.style.display === "none" ? "block" : "none";
         }
     </script>
 </head>
@@ -74,7 +77,7 @@
             <div class="week" onclick="toggleDays('week{i}')">
                 <div class="week-title">Week {i}</div>
                 <div class="days" id="week{i}">
-                    {"".join([f'<div class="day"><a href="#day{(i-1)*7 + j}">Day {(i-1)*7 + j}</a></div>' for j in range(1, 8)])}
+                    {''.join([f'<div class="day"><a href="#day{(i-1)*7 + j}">Day {(i-1)*7 + j}</a></div>' for j in range(1, 8)])}
                 </div>
             </div>
             """ for i in range(1, 16)]) + "
@@ -85,7 +88,9 @@
         " + "".join([f"""
         <div id="day{i}">
             <h2>Day {i}</h2>
-            <p>Content for Day {i}.</p>
+            <p>{""" + """.join([
+                "Introduction to DevOps", "Git Basics", "CI/CD", "Docker", "Kubernetes", "Cloud", "Security"] if i <= 100 else ["Further Learning"]
+            ) + """}</p>
         </div>
         """ for i in range(1, 101)]) + "
     </div>
