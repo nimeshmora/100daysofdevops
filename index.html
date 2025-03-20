@@ -8,17 +8,18 @@
     <style>
         body {
             display: flex;
-            background-color: #f8f9fa;
+            background-color: #f4f4f4;
         }
         .sidebar {
             width: 300px;
             height: 100vh;
             position: fixed;
             overflow-y: auto;
-            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            background: linear-gradient(135deg, #1a237e, #283593);
             color: white;
             padding: 20px;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
+            border-right: 2px solid #3949ab;
         }
         .sidebar h3 {
             text-align: center;
@@ -26,6 +27,7 @@
             margin-bottom: 20px;
             font-size: 22px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .content {
             margin-left: 320px;
@@ -43,6 +45,8 @@
             padding: 12px;
             border-radius: 5px;
             transition: all 0.3s ease-in-out;
+            display: flex;
+            justify-content: space-between;
         }
         .btn-toggle:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -67,7 +71,7 @@
         }
         .content h2 {
             font-weight: bold;
-            color: #0d47a1;
+            color: #1a237e;
         }
         .content p {
             font-size: 18px;
@@ -95,7 +99,7 @@
             "Deep Dive into Docker and Containerization",
             "Kubernetes Fundamentals",
             "Advanced Kubernetes Topics",
-            "Final Kubernetes Topics and Best Practices",
+            "Hands-on Kubernetes",
             "Cloud Computing Fundamentals",
             "Infrastructure as Code with Terraform",
             "Configuration Management with Ansible",
@@ -119,9 +123,9 @@
             }
             
             content.innerHTML += `
-                <div class='accordion-item bg-dark'>
+                <div class='accordion-item'>
                     <h2 class='accordion-header'>
-                        <button class='btn-toggle' data-bs-toggle='collapse' data-bs-target='#${weekId}'>Week ${index+1}: ${week}</button>
+                        <button class='btn-toggle' data-bs-toggle='collapse' data-bs-target='#${weekId}'>Week ${index+1}: ${week} <span>▼</span></button>
                     </h2>
                     <div id='${weekId}' class='accordion-collapse collapse' data-bs-parent='#devopsAccordion'>
                         <div class='accordion-body'>
