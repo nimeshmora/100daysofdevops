@@ -4,192 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>100-Day DevOps Learning Plan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            display: flex;
             font-family: Arial, sans-serif;
+            display: flex;
             margin: 0;
-            background: #f4f4f4;
         }
         .sidebar {
-            width: 280px;
-            height: 100vh;
-            background: #2c3e50;
+            width: 250px;
+            background-color: #1E293B;
             color: white;
-            padding-top: 20px;
+            height: 100vh;
+            padding: 15px;
             position: fixed;
             overflow-y: auto;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
         }
         .sidebar h2 {
             text-align: center;
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #f39c12;
-        }
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 12px;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 14px;
-            border-bottom: 1px solid #34495e;
-            cursor: pointer;
-        }
-        .sidebar a:hover {
-            background: #f39c12;
-        }
-        .content {
-            margin-left: 300px;
-            padding: 20px;
-            width: 100%;
-            background: #ecf0f1;
+            color: #FACC15;
         }
         .week {
-            display: none;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 10px 0;
+            cursor: pointer;
         }
-        .week.active {
-            display: block;
-        }
-        .week h2 {
-            background: #3498db;
-            color: white;
+        .week-title {
             padding: 10px;
+            background-color: #334155;
             border-radius: 5px;
-            text-align: center;
+            font-weight: bold;
+        }
+        .days {
+            display: none;
+            padding-left: 15px;
         }
         .day {
-            cursor: pointer;
-            background: #e74c3c;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 5px;
-            transition: 0.3s;
-            font-weight: bold;
-            color: white;
+            padding: 5px 0;
         }
-        .day:hover {
-            background: #c0392b;
-        }
-        .day-content {
-            display: none;
-            margin-left: 20px;
-            padding: 10px;
-            background: white;
-            border-left: 5px solid #e74c3c;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        .day-content.active {
-            display: block;
-        }
-        .day-content ul {
-            list-style: none;
-            padding: 0;
-        }
-        .day-content ul li {
-            margin: 5px 0;
-        }
-        .day-content ul li a {
+        .day a {
+            color: #FACC15;
             text-decoration: none;
-            color: #2980b9;
-            font-weight: bold;
         }
-        .day-content ul li a:hover {
+        .day a:hover {
             text-decoration: underline;
         }
     </style>
     <script>
-        function showWeek(weekId) {
-            let weeks = document.getElementsByClassName("week");
-            for (let i = 0; i < weeks.length; i++) {
-                weeks[i].classList.remove("active");
+        function toggleDays(id) {
+            var days = document.getElementById(id);
+            if (days.style.display === "none") {
+                days.style.display = "block";
+            } else {
+                days.style.display = "none";
             }
-            document.getElementById(weekId).classList.add("active");
-        }
-
-        function toggleDay(dayId) {
-            let dayContent = document.getElementById(dayId);
-            dayContent.classList.toggle("active");
         }
     </script>
 </head>
 <body>
     <div class="sidebar">
-        <h2>100-Day DevOps Plan</h2>
-        <script>
-            for (let i = 1; i <= 15; i++) {
-                document.write(`<a onclick="showWeek('week${i}')">Week ${i}</a>`);
-            }
-        </script>
+        <h2>100-Day DevOps</h2>
+        <div class="weeks">
+            <!-- Generate 15 weeks with expandable days -->
+            " + "".join([f"""
+            <div class="week" onclick="toggleDays('week{i}')">
+                <div class="week-title">Week {i}</div>
+                <div class="days" id="week{i}">
+                    {"".join([f'<div class="day"><a href="#day{(i-1)*7 + j}">Day {(i-1)*7 + j}</a></div>' for j in range(1, 8)])}
+                </div>
+            </div>
+            """ for i in range(1, 16)]) + "
+        </div>
     </div>
-    
     <div class="content">
-        <script>
-            let topics = {
-                1: "DevOps Foundations, Linux, and Networking",
-                2: "Git and Version Control",
-                3: "Continuous Integration and Delivery (CI/CD)",
-                4: "Docker and Containerization",
-                5: "Kubernetes Fundamentals",
-                6: "Advanced Kubernetes Topics",
-                7: "Final Kubernetes Topics and Best Practices",
-                8: "Cloud Computing Fundamentals",
-                9: "Infrastructure as Code with Terraform",
-                10: "Configuration Management with Ansible",
-                11: "Monitoring, Logging, and Observability",
-                12: "Security and DevSecOps",
-                13: "DevOps Culture and Best Practices",
-                14: "Advanced DevOps Topics and Trends",
-                15: "Wrap-Up and Next Steps"
-            };
-            
-            let dailyTopics = {
-                1: "Introduction to DevOps Fundamentals",
-                2: "Introduction to Linux for DevOps",
-                3: "Linux System and Process Management",
-                4: "Linux Shell Scripting and Automation",
-                5: "Introduction to Networking for DevOps",
-                6: "Networking Tools and Troubleshooting",
-                7: "Linux Networking & Security Basics",
-                8: "Introduction to Git and Version Control",
-                9: "Working with GitHub and Remote Repositories",
-                10: "Branching, Merging, and Pull Requests",
-                11: "Handling Merge Conflicts & Git Workflow Strategies",
-                12: "Stashing, Ignoring Files & Rewriting History",
-                13: "Advanced Git Techniques & Repository Maintenance",
-                14: "Final Project - Apply Everything Learned",
-                15: "Introduction to CI/CD",
-                16: "CI/CD Pipeline Stages and Practices",
-                17: "CI/CD Tools Overview",
-                18: "Hands-on: Building a Basic CI/CD Pipeline",
-                19: "Continuous Deployment and Automated Testing",
-                20: "Security in CI/CD Pipelines",
-                21: "CI/CD in Cloud-Native Environments"
-            };
-
-            for (let week = 1, dayCounter = 1; week <= 15; week++) {
-                document.write(`<div id="week${week}" class="week ${week === 1 ? 'active' : ''}">`);
-                document.write(`<h2>Week ${week}: ${topics[week]}</h2>`);
-                
-                for (let day = 1; day <= 7 && dayCounter <= 100; day++, dayCounter++) {
-                    document.write(`
-                        <div class="day" onclick="toggleDay('day${dayCounter}')">Day ${dayCounter}: ${dailyTopics[dayCounter] || 'Additional Learning'}</div>
-                        <div id="day${dayCounter}" class="day-content">
-                            <ul>
-                                <li><a href="#">Learn about ${dailyTopics[dayCounter] || 'extra topics'}.</a></li>
-                            </ul>
-                        </div>
-                    `);
-                }
-                document.write('</div>');
-            }
-        </script>
+        <h1>100-Day DevOps Learning Plan</h1>
+        " + "".join([f"""
+        <div id="day{i}">
+            <h2>Day {i}</h2>
+            <p>Content for Day {i}.</p>
+        </div>
+        """ for i in range(1, 101)]) + "
     </div>
 </body>
 </html>
