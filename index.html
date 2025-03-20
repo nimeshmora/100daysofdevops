@@ -122,7 +122,6 @@
 <body>
     <div class="sidebar">
         <h2>100-Day DevOps Plan</h2>
-        <!-- Generate Sidebar for 15 Weeks -->
         <script>
             for (let i = 1; i <= 15; i++) {
                 document.write(`<a onclick="showWeek('week${i}')">Week ${i}</a>`);
@@ -131,18 +130,59 @@
     </div>
     
     <div class="content">
-        <!-- Generate 15 Weeks and 100 Days Content -->
         <script>
+            let topics = {
+                1: "DevOps Foundations, Linux, and Networking",
+                2: "Git and Version Control",
+                3: "Continuous Integration and Delivery (CI/CD)",
+                4: "Docker and Containerization",
+                5: "Kubernetes Fundamentals",
+                6: "Advanced Kubernetes Topics",
+                7: "Final Kubernetes Topics and Best Practices",
+                8: "Cloud Computing Fundamentals",
+                9: "Infrastructure as Code with Terraform",
+                10: "Configuration Management with Ansible",
+                11: "Monitoring, Logging, and Observability",
+                12: "Security and DevSecOps",
+                13: "DevOps Culture and Best Practices",
+                14: "Advanced DevOps Topics and Trends",
+                15: "Wrap-Up and Next Steps"
+            };
+            
+            let dailyTopics = {
+                1: "Introduction to DevOps Fundamentals",
+                2: "Introduction to Linux for DevOps",
+                3: "Linux System and Process Management",
+                4: "Linux Shell Scripting and Automation",
+                5: "Introduction to Networking for DevOps",
+                6: "Networking Tools and Troubleshooting",
+                7: "Linux Networking & Security Basics",
+                8: "Introduction to Git and Version Control",
+                9: "Working with GitHub and Remote Repositories",
+                10: "Branching, Merging, and Pull Requests",
+                11: "Handling Merge Conflicts & Git Workflow Strategies",
+                12: "Stashing, Ignoring Files & Rewriting History",
+                13: "Advanced Git Techniques & Repository Maintenance",
+                14: "Final Project - Apply Everything Learned",
+                15: "Introduction to CI/CD",
+                16: "CI/CD Pipeline Stages and Practices",
+                17: "CI/CD Tools Overview",
+                18: "Hands-on: Building a Basic CI/CD Pipeline",
+                19: "Continuous Deployment and Automated Testing",
+                20: "Security in CI/CD Pipelines",
+                21: "CI/CD in Cloud-Native Environments"
+            };
+
             for (let week = 1, dayCounter = 1; week <= 15; week++) {
                 document.write(`<div id="week${week}" class="week ${week === 1 ? 'active' : ''}">`);
-                document.write(`<h2>Week ${week}</h2>`);
+                document.write(`<h2>Week ${week}: ${topics[week]}</h2>`);
                 
                 for (let day = 1; day <= 7 && dayCounter <= 100; day++, dayCounter++) {
                     document.write(`
-                        <div class="day" onclick="toggleDay('day${dayCounter}')">Day ${dayCounter}</div>
+                        <div class="day" onclick="toggleDay('day${dayCounter}')">Day ${dayCounter}: ${dailyTopics[dayCounter] || 'Additional Learning'}</div>
                         <div id="day${dayCounter}" class="day-content">
                             <ul>
-                                <li><a href="#">Topic for Day ${dayCounter}</a></li>
+                                <li><a href="#">Learn about ${dailyTopics[dayCounter] || 'extra topics'}.</a></li>
                             </ul>
                         </div>
                     `);
