@@ -4,95 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>100-Day DevOps Learning Plan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
             display: flex;
-            margin: 0;
-            background-color: #F8FAFC;
         }
         .sidebar {
-            width: 280px;
-            background-color: #1F2937;
-            color: white;
+            width: 300px;
             height: 100vh;
-            padding: 20px;
             position: fixed;
             overflow-y: auto;
+            background: #343a40;
+            color: white;
+            padding: 15px;
         }
         .content {
-            margin-left: 300px;
+            margin-left: 320px;
             padding: 20px;
+        }
+        .btn-toggle {
             width: 100%;
-        }
-        .sidebar h2 {
-            text-align: center;
-            color: #FACC15;
-            margin-bottom: 20px;
-        }
-        .week {
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .week-title {
-            padding: 12px;
-            background-color: #374151;
-            border-radius: 5px;
+            text-align: left;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
             font-weight: bold;
-            color: #FACC15;
         }
-        .days {
-            display: none;
-            padding-left: 15px;
-            background-color: #4B5563;
-            border-radius: 5px;
-            margin-top: 5px;
-            padding: 10px;
+        .btn-toggle:hover {
+            color: #f8f9fa;
         }
-        .day {
-            padding: 5px 0;
+        .list-group-item {
+            background: none;
+            border: none;
+            color: white;
         }
-        .day a {
-            color: #FACC15;
+        .list-group-item a {
             text-decoration: none;
+            color: white;
         }
-        .day a:hover {
-            text-decoration: underline;
+        .list-group-item a:hover {
+            color: #adb5bd;
         }
     </style>
-    <script>
-        function toggleDays(id) {
-            var days = document.getElementById(id);
-            days.style.display = days.style.display === "none" ? "block" : "none";
-        }
-    </script>
 </head>
 <body>
     <div class="sidebar">
-        <h2>100-Day DevOps</h2>
-        <div class="weeks">
-            <!-- Generate 15 weeks with expandable days -->
-            " + "".join([f"""
-            <div class="week" onclick="toggleDays('week{i}')">
-                <div class="week-title">Week {i}</div>
-                <div class="days" id="week{i}">
-                    {''.join([f'<div class="day"><a href="#day{(i-1)*7 + j}">Day {(i-1)*7 + j}</a></div>' for j in range(1, 8)])}
+        <h3>100-Day DevOps Plan</h3>
+        <div class="accordion" id="devopsAccordion">
+            
+            <!-- Dynamically Generated Weeks and Days -->
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header">
+                    <button class="btn-toggle" data-bs-toggle="collapse" data-bs-target="#week1">Week 1: DevOps Foundations, Linux, and Networking</button>
+                </h2>
+                <div id="week1" class="accordion-collapse collapse show" data-bs-parent="#devopsAccordion">
+                    <div class="accordion-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="#day1">Day 1: Introduction to DevOps Fundamentals</a></li>
+                            <li class="list-group-item"><a href="#day2">Day 2: Introduction to Linux for DevOps</a></li>
+                            <li class="list-group-item"><a href="#day3">Day 3: Linux System and Process Management</a></li>
+                            <li class="list-group-item"><a href="#day4">Day 4: Linux Shell Scripting and Automation</a></li>
+                            <li class="list-group-item"><a href="#day5">Day 5: Introduction to Networking for DevOps</a></li>
+                            <li class="list-group-item"><a href="#day6">Day 6: Networking Tools and Troubleshooting</a></li>
+                            <li class="list-group-item"><a href="#day7">Day 7: Linux Networking & Security Basics</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            """ for i in range(1, 16)]) + "
+            
+            <!-- Add more weeks following the same structure -->
         </div>
     </div>
+    
     <div class="content">
-        <h1>100-Day DevOps Learning Plan</h1>
-        " + "".join([f"""
-        <div id="day{i}">
-            <h2>Day {i}</h2>
-            <p>{""" + """.join([
-                "Introduction to DevOps", "Git Basics", "CI/CD", "Docker", "Kubernetes", "Cloud", "Security"] if i <= 100 else ["Further Learning"]
-            ) + """}</p>
-        </div>
-        """ for i in range(1, 101)]) + "
+        <h2 id="day1">Day 1: Introduction to DevOps Fundamentals</h2>
+        <p>What is DevOps and why it matters.<br>
+        DevOps as a culture: Bridging Development (Dev) and Operations (Ops).<br>
+        Core principles: Collaboration, CI/CD, automation, continuous improvement.<br>
+        DevOps lifecycle overview: Planning → Coding → Building → Testing → Releasing → Deploying → Operating → Monitoring.</p>
+        
+        <h2 id="day2">Day 2: Introduction to Linux for DevOps</h2>
+        <p>Why Linux is crucial for DevOps.<br>
+        Basic Linux commands: (ls, cd, mkdir, rm, cp, mv, touch, cat, echo).<br>
+        File permissions and ownership (chmod, chown, ls -l).<br>
+        User and group management (adduser, usermod, passwd).</p>
+        
+        <!-- More content dynamically added -->
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
