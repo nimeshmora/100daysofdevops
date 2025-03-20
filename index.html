@@ -15,15 +15,17 @@
             height: 100vh;
             position: fixed;
             overflow-y: auto;
-            background: linear-gradient(135deg, #343a40, #1d1f21);
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
             color: white;
             padding: 20px;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
         }
         .sidebar h3 {
             text-align: center;
             font-weight: bold;
             margin-bottom: 20px;
+            font-size: 22px;
+            text-transform: uppercase;
         }
         .content {
             margin-left: 320px;
@@ -38,21 +40,21 @@
             color: white;
             font-size: 18px;
             font-weight: bold;
-            padding: 10px;
+            padding: 12px;
             border-radius: 5px;
-            transition: background 0.3s;
+            transition: all 0.3s ease-in-out;
         }
         .btn-toggle:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #f8f9fa;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
         }
         .list-group-item {
             background: none;
             border: none;
             color: white;
-            padding: 8px 15px;
+            padding: 10px 15px;
             font-size: 16px;
-            transition: background 0.3s;
+            transition: all 0.3s ease-in-out;
         }
         .list-group-item a {
             text-decoration: none;
@@ -61,11 +63,11 @@
             padding: 5px 0;
         }
         .list-group-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
         }
         .content h2 {
             font-weight: bold;
-            color: #343a40;
+            color: #0d47a1;
         }
         .content p {
             font-size: 18px;
@@ -135,7 +137,13 @@
             let contentDetails = document.getElementById("contentDetails");
             
             contentTitle.innerHTML = `Day ${day}: ${week}`;
-            contentDetails.innerHTML = `Detailed content for Day ${day} under <b>${week}</b> will go here.`;
+            contentDetails.innerHTML = `Detailed content for Day ${day} under <b>${week}</b> will go here. <br><br>
+            <b>Resources:</b>
+            <ul>
+                <li><a href='#' target='_blank'>Related Blog</a></li>
+                <li><a href='#' target='_blank'>Infographic</a></li>
+                <li><a href='#' target='_blank'>Ebook</a></li>
+            </ul>`;
         }
     </script>
 </body>
