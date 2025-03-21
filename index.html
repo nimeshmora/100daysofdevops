@@ -12,17 +12,17 @@
             background: #f8f9fa;
         }
         #sidebar {
-            width: 300px;
-            background: rgba(44, 62, 80, 0.9);
-            color: white;
-            padding: 15px;
-            height: 100vh;
-            position: fixed;
-            overflow-y: auto;
-            transition: 0.3s;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px 0 0 10px;
-        }
+    width: 300px;
+    background: #000; /* Solid black background */
+    color: #fff;
+    padding: 15px;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    transition: 0.3s;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 0;
+}
         #sidebar h2 {
             text-align: center;
             margin-bottom: 10px;
@@ -31,27 +31,38 @@
             margin-bottom: 10px;
         }
         .week-title {
-            background: #34495e;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        }
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
         .day-list {
             display: none;
             padding-left: 10px;
         }
         .day {
-            padding: 8px;
-            cursor: pointer;
-            margin: 5px 0;
-            background: rgba(59, 89, 152, 0.7);
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .day:hover, .day.active {
-            background: rgba(30, 136, 229, 0.9);
-        }
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin: 5px 0;
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s;
+}
+
+.day:hover,
+.day.active {
+    background: #1e88e5;
+    color: #fff;
+}
+
         .content {
             margin-left: 320px;
             padding: 20px;
@@ -79,6 +90,25 @@
         .resource-section h3 {
             margin-bottom: 10px;
         }
+        .day {
+    padding: 8px;
+    cursor: pointer;
+    margin: 5px 0;
+    background: rgba(59, 89, 152, 0.7);
+    border-radius: 5px;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.day input[type="checkbox"] {
+    accent-color: #4caf50; /* Green when checked */
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+
     </style>
 </head>
 <body>
@@ -87,10 +117,112 @@
         <div class="week" onclick="toggleWeek('week1')">
             <div class="week-title">Week 1: DevOps Foundations</div>
             <div id="week1" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">
+                    <input type="checkbox" onclick="event.stopPropagation()">
+                    <span>Day 1: Introduction to DevOps Fundamentals</span>
+                </div>
+                <div class="day" onclick="showDay(event, 'day2', this)">
+                    <input type="checkbox" onclick="event.stopPropagation()">
+                    <span>Day 2: Introduction to Linux for DevOps</span>
+                </div>
+                <div class="day" onclick="showDay(event, 'day3', this)">
+                    <input type="checkbox" onclick="event.stopPropagation()">
+                    <span>Day 3: Linux System and Process Management</span>
+                </div>
+                <div class="day" onclick="showDay(event, 'day4', this)">
+                    <input type="checkbox" onclick="event.stopPropagation()">
+                    <span>Day 4: Linux Shell Scripting and Automation</span>
+                </div>
+                <div class="day" onclick="showDay(event, 'day5', this)">
+                    <input type="checkbox" onclick="event.stopPropagation()">
+                    <span>Day 5: Introduction to Networking for DevOps</span>
+                </div>
+                <div class="day" onclick="showDay(event, 'day6', this)">
+                    <input type="checkbox" onclick="event.stopPropagation()">
+                    <span>Day 6: Networking Tools and Troubleshooting</span>
+                </div>
+                <div class="day" onclick="showDay(event, 'day7', this)">
+                    <input type="checkbox" onclick="event.stopPropagation()">
+                    <span>Day 7: Linux Networking & Security Basics</span>
+                </div>
+            </div>
+            
+        </div>
+        <div class="week" onclick="toggleWeek('week2')">
+            <div class="week-title">Week 2: Git and Version Control</div>
+            <div id="week2" class="day-list">
+                <div class="day" onclick="showDay(event, 'day8', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day9', this)">Day 2: Linux for DevOps</div>
+            </div>
+        </div>
+        <div class="week" onclick="toggleWeek('week3')">
+            <div class="week-title">Week 3: Continuous Integration and Delivery</div>
+            <div id="week3" class="day-list">
                 <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
                 <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
             </div>
         </div>
+            <div class="week-title">Week 4: Deep Dive into Docker and Containerization </div>
+            <div id="week4" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 5: Kubernetes Fundamentals</div>
+            <div id="week5" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 6: Advanced Kubernetes Topics</div>
+            <div id="week6" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 7: Final Kubernetes Topics and Best Practices </div>
+            <div id="week7" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 8: Cloud Computing Fundamentals</div>
+            <div id="week8" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 9: Infrastructure as Code with Terraform</div>
+            <div id="week9" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 10: Configuration Management with Ansible</div>
+            <div id="week10" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 11: Monitoring, Logging, and Observability</div>
+            <div id="week11" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 12: Security and DevSecOps</div>
+            <div id="week12" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 13: DevOps Culture and Best Practices</div>
+            <div id="week13" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 14: Advanced DevOps Topics and Trends </div>
+            <div id="week14" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+            <div class="week-title">Week 15: Wrap-Up and Next Steps</div>
+            <div id="week15" class="day-list">
+                <div class="day" onclick="showDay(event, 'day1', this)">Day 1: Introduction to DevOps</div>
+                <div class="day" onclick="showDay(event, 'day2', this)">Day 2: Linux for DevOps</div>
+            </div>
+       
     </div>
     
     <div class="content">
@@ -113,6 +245,27 @@
         </div>
         
         <div id="day2" class="day-content">
+            <h2>Day 2: Linux for DevOps</h2>
+            <p>Why Linux is crucial for DevOps. <a href="#">Read more in this blog</a></p>
+            <p>Basic Linux commands: <code>ls</code>, <code>cd</code>, <code>mkdir</code>, <code>rm</code>, <code>cp</code>, <code>mv</code>, <code>touch</code>, <code>cat</code>, <code>echo</code>. <a href="#">Watch this tutorial</a></p>
+            <p>File permissions and ownership: <code>chmod</code>, <code>chown</code>, <code>ls -l</code>. <a href="#">View infographic</a></p>
+            <p>User and group management: <code>adduser</code>, <code>usermod</code>, <code>passwd</code>. <a href="#">Download the eBook</a></p>
+            
+            <div class="resource-section">
+                <h3>Additional Resources</h3>
+                <ul>
+                    <li><a href="#">Linux Essentials for DevOps (Blog)</a></li>
+                    <li><a href="#">Linux Basics for DevOps (Video)</a></li>
+                    <li><a href="#">File Permissions in Linux (Infographic)</a></li>
+                    <li><a href="#">Mastering Linux (eBook)</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        <div id="day8" class="day-content">
             <h2>Day 2: Linux for DevOps</h2>
             <p>Why Linux is crucial for DevOps. <a href="#">Read more in this blog</a></p>
             <p>Basic Linux commands: <code>ls</code>, <code>cd</code>, <code>mkdir</code>, <code>rm</code>, <code>cp</code>, <code>mv</code>, <code>touch</code>, <code>cat</code>, <code>echo</code>. <a href="#">Watch this tutorial</a></p>
